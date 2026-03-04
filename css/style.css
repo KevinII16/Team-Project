@@ -1,0 +1,189 @@
+
+body {
+  background-color: #f4f6f8;
+  color: #222;
+}
+
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #0077cc;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link:hover .card {
+  background-color: #f0f4f8;
+}
+
+input, select, button {
+  padding: 10px;
+  margin: 8px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: 100px repeat(5, 1fr);
+  gap: 5px;
+}
+
+.grid-7 {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.cell {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 60px;
+  background: #ffffff;
+}
+
+.header-cell {
+  background-color: #e9eef3;
+  font-weight: bold;
+  text-align: center;
+}
+
+.shift-block {
+  background-color: #dbeafe;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* ===== Dashboard Layout ===== */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 35px;
+  min-height: 240px;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 20px;
+}
+
+.dashboard-card p {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Auth Page Styling ===== */
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #eef2f7;
+}
+
+.auth-card {
+  width: 380px;
+  padding: 40px;
+  text-align: left;
+}
+
+.auth-card h2 {
+  margin-bottom: 10px;
+}
+
+.auth-subtitle {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.auth-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-footer a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
