@@ -3,31 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Scheduler</title>
+  <title>Student Scheduler - Login</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <h1>Student Scheduler</h1>
-  <nav>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="school.html">School Scheduler</a>
-    <a href="work.html">Work Scheduler</a>
-  </nav>
-</header>
-<div class="container">
 
-<div class="card">
-<h2>Login</h2>
-<form action="dashboard.html">
-<label>Email</label>
-<input type="email" required>
-<label>Password</label>
-<input type="password" required>
-<button type="submit">Login</button>
-</form>
+<div class="auth-wrapper">
+
+  <div class="card auth-card">
+    <h2>Student Scheduler</h2>
+    <p class="auth-subtitle">Sign in to access your schedules</p>
+
+    <form action="dashboard.html">
+      <label>Email</label>
+      <input type="email" required>
+
+      <label>Password</label>
+      <input type="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="auth-footer">
+      <p>Don't have an account?</p>
+      <a href="#">Create Account</a>
+    </div>
+  </div>
+
 </div>
 
-</div>
 </body>
 </html>
