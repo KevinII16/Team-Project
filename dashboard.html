@@ -6,40 +6,90 @@
   <title>Student Scheduler</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
 <header>
   <h1>Student Scheduler</h1>
   <nav>
-    <a href="assignments.html">Dashboard</a>
+    <a href="dashboard.html">Dashboard</a>
     <a href="school.html">School Scheduler</a>
+    <a href="assignments.html">Assignments</a>
     <a href="work.html">Work Scheduler</a>
   </nav>
 </header>
+
 <div class="container">
 
-<h2>Assigement</h2>
-<div class ="dashboard-grid">
-<a href="school.html" class="card-link">
-  <div class="dashboard-card">
-    <h3>School Scheduler</h3>
-    <p>View and manage your weekly class timetable.</p>
-  </div>
-</a>
+<h2>Dashboard</h2>
 
-<a href="work.html" class="card-link">
-  <div class="dashboard-card">
-    <h3>Work Scheduler</h3>
-    <p>Track your part-time shifts throughout the week.</p>
-  </div>
-</a>
+<div class="dashboard-grid">
 
-<a href="assignments.html" class="card-link">
+  <!-- School Scheduler Card -->
   <div class="dashboard-card">
+
+    <div class="card-icon school-icon">
+      📚
+    </div>
+
+    <h3>School Schedule</h3>
+
+    <p>
+      View your weekly timetable with all classes and
+      time slots organised clearly.
+    </p>
+
+    <a href="school.html" class="card-link-text">
+      View timetable →
+    </a>
+
+  </div>
+
+
+  <!-- Assignment Scheduler Card -->
+  <div class="dashboard-card">
+
+    <div class="card-icon assignment-icon">
+      📝
+    </div>
+
     <h3>Assignment Scheduler</h3>
-    <p>Keep track of coursework and deadlines.</p>
+
+    <p>
+      Track coursework deadlines and add new
+      assignments to stay organised.
+    </p>
+
+    <a href="assignments.html" class="card-link-text">
+      Manage assignments →
+    </a>
+
   </div>
-</a>
+
+
+  <!-- Work Scheduler Card -->
+  <div class="dashboard-card">
+
+    <div class="card-icon work-icon">
+      💼
+    </div>
+
+    <h3>Work Shift Scheduler</h3>
+
+    <p>
+      Keep your part-time work shifts organised
+      alongside your classes.
+    </p>
+
+    <a href="work.html" class="card-link-text">
+      View shifts →
+    </a>
+
+  </div>
 
 </div>
+
+</div>
+
 </body>
 </html>
