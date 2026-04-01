@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudySync - School Schedule</title>
+  <title>Student Scheduler</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header>
-  <h1>StudySync</h1>
+  <h1>Student Scheduler</h1>
   <nav>
     <a href="dashboard.html">Dashboard</a>
     <a href="school.html">School Scheduler</a>
@@ -22,25 +20,22 @@
 
 <div class="container">
 
+  <h2>School Schedule</h2>
+
   <div class="schedule-layout">
 
     <!-- LEFT SIDE -->
     <div class="timetable-section">
 
-      <h2>School Schedule</h2>
-
-      <!-- WEEK TABS -->
       <div class="week-tabs">
         <button class="week-btn active">Week 1</button>
         <button class="week-btn">Week 2</button>
         <button class="week-btn">Week 3</button>
       </div>
 
-      <!-- TIMETABLE -->
       <div class="card">
         <div class="grid-5" id="timetable">
 
-          <!-- HEADER -->
           <div class="cell header-cell">Time</div>
           <div class="cell header-cell">Mon</div>
           <div class="cell header-cell">Tue</div>
@@ -48,35 +43,14 @@
           <div class="cell header-cell">Thu</div>
           <div class="cell header-cell">Fri</div>
 
-          <!-- ROW 1 -->
-          <div class="cell">9:00</div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-
-          <!-- ROW 2 -->
-          <div class="cell">11:00</div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-
-          <!-- ROW 3 -->
-          <div class="cell">1:00</div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
-          <div class="cell"></div>
+          <div class="empty-state">
+            No classes yet. Add your first class →
+          </div>
 
         </div>
       </div>
 
     </div>
-
 
     <!-- RIGHT SIDE -->
     <div class="add-class-panel">
@@ -86,7 +60,7 @@
       <form id="classForm">
 
         <label>Class Name</label>
-        <input type="text" id="className" placeholder="e.g. Databases" required>
+        <input type="text" id="className" required>
 
         <label>Day</label>
         <select id="classDay">
@@ -98,11 +72,7 @@
         </select>
 
         <label>Time</label>
-        <select id="classTime">
-          <option value="0">9:00</option>
-          <option value="1">11:00</option>
-          <option value="2">1:00</option>
-        </select>
+        <input type="time" id="classTime" required>
 
         <button type="submit">Add Class</button>
 
@@ -113,3 +83,8 @@
   </div>
 
 </div>
+
+<script src="js/school.js"></script>
+
+</body>
+</html>
