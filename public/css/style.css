@@ -380,3 +380,29 @@ button:hover {
     display: inline-block;
   }
 }
+
+
+.schedule-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: nowrap; 
+}
+
+.timetable-section {
+  flex: 2;
+  min-width: 0; 
+}
+
+.add-class-panel {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .schedule-layout {
+    flex-direction: column;
+  }
+}
