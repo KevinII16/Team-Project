@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudySync</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>StudySync</h1>
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="school.html">School Scheduler</a>
+      <a href="work.html">Work Scheduler</a>
+      <a href="assignments.html">Assignment Scheduler</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="page-heading">
+      <div>
+        <h2>Assignment Scheduler</h2>
+        <p class="page-subtitle">This page is connected to MongoDB</p>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="card">
+        <div class="list-header">
+          <h3>Saved Assignments</h3>
+          <span id="assignmentTotal" class="badge">0 items</span>
+        </div>
+        <div id="assignmentMessage" class="message-box hidden"></div>
+        <ul id="assignmentList" class="assignment-list"></ul>
+      </div>
+
+      <div class="card">
+        <h3>Add Assignment</h3>
+        <form id="assignmentForm" class="add-form">
+          <label for="title">Assignment Name</label>
+          <input type="text" id="title" name="title" placeholder="e.g. Database Project" required>
+
+          <label for="module">Module</label>
+          <input type="text" id="module" name="module" placeholder="e.g. Advanced Databases" required>
+
+          <label for="dueDate">Due Date</label>
+          <input type="date" id="dueDate" name="dueDate" required>
+
+          <button type="submit">Add Assignment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/assignments.js"></script>
+</body>
+</html>
