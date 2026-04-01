@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Scheduler - Register</title>
+  <title>StudySync - Register</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -15,19 +15,19 @@
     <h2>Create Account</h2>
     <p class="auth-subtitle">Sign up to start managing your schedule</p>
 
-    <form action="dashboard.html">
+    <form id="registerForm">
 
       <label>Full Name</label>
-      <input type="text" required>
+      <input type="text" id="name" placeholder="John Doe" required>
 
       <label>Email</label>
-      <input type="email" required>
+      <input type="email" id="email" placeholder="john@example.com" required>
 
       <label>Password</label>
-      <input type="password" required>
+      <input type="password" id="password" placeholder="Enter password" required>
 
       <label>Confirm Password</label>
-      <input type="password" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm password" required>
 
       <button type="submit">Create Account</button>
 
@@ -41,6 +41,8 @@
   </div>
 
 </div>
+
+<script src="js/register.js"></script>
 
 </body>
 </html>
