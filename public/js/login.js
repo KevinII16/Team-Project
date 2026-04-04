@@ -16,7 +16,8 @@ form.addEventListener("submit", async (e) => {
 
   const data = await res.json();
 
-  if (data.message === "Login successful") {
+  if (res.ok) {
+    localStorage.setItem("userEmail", email); // 🔥 THIS FIXES EVERYTHING
     window.location.href = "dashboard.html";
   } else {
     alert(data.message);
