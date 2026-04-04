@@ -1,51 +1,70 @@
-const assignmentCount = document.getElementById('assignmentCount');
-const nextDue = document.getElementById('nextDue');
-const upcomingAssignments = document.getElementById('upcomingAssignments');
+document.addEventListener("DOMContentLoaded", () => {
 
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-IE', {
-    day: 'numeric',
-    month: 'short',
-  });
-}
+  // LOAD ASSIGNMENTS
+  async function loadAssignments() {
+    try {
+      const res = await fetch("/api/assignments");
+      const assignments = await res.json();
 
-async function loadDashboardData() {
-  try {
-    const response = await fetch('/api/assignments');
-    const assignments = await response.json();
+      // count
+      document.getElementById("assignmentCount").textContent = assignments.length;
 
-    assignmentCount.textContent = assignments.length;
+      // next due
+      if (assignments.length > 0) {
+        const next = assignments[0];
 
-    if (!assignments.length) {
-      nextDue.textContent = 'No data';
-      upcomingAssignments.innerHTML = '<p class="muted-text">No assignments added yet.</p>';
-      return;
+        const date = new Date(next.dueDate);
+        const formatted = date.toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short"
+        });
+
+        document.getElementById("nextDue").textContent = formatted;
+      }
+
+    } catch (err) {
+      console.error("Error loading assignments:", err);
     }
-
-    nextDue.textContent = formatDate(assignments[0].dueDate);
-
-    const upcomingHtml = assignments
-      .slice(0, 3)
-      .map(
-        (assignment) => `
-          <div class="upcoming-item">
-            <div>
-              <strong>${assignment.title}</strong>
-              <p>${assignment.module}</p>
-            </div>
-            <span class="badge">${formatDate(assignment.dueDate)}</span>
-          </div>
-        `
-      )
-      .join('');
-
-    upcomingAssignments.innerHTML = upcomingHtml;
-  } catch (error) {
-    assignmentCount.textContent = '0';
-    nextDue.textContent = 'Error';
-    upcomingAssignments.innerHTML = '<p class="muted-text">Could not load dashboard data.</p>';
   }
-}
 
-loadDashboardData();
+  // LOAD WORK STATS
+  async function loadWorkStats() {
+    try {
+      const res = await fetch("/api/work");
+      const shifts = await res.json();
+
+      let totalMoney = 0;
+      let totalHours = 0;
+
+      shifts.forEach(shift => {
+        // money
+        totalMoney += shift.total || 0;
+
+        // hours from start/end
+        if (shift.start && shift.end) {
+          const [sh, sm] = shift.start.split(":").map(Number);
+          const [eh, em] = shift.end.split(":").map(Number);
+
+          let startMin = sh * 60 + sm;
+          let endMin = eh * 60 + em;
+
+          if (endMin < startMin) {
+            endMin += 24 * 60; // overnight
+          }
+
+          totalHours += (endMin - startMin) / 60;
+        }
+      });
+
+      document.getElementById("totalHours").textContent = totalHours.toFixed(1);
+      document.getElementById("totalMoney").textContent = "€" + totalMoney.toFixed(2);
+
+    } catch (err) {
+      console.error("Error loading work stats:", err);
+    }
+  }
+
+  loadAssignments();
+  loadWorkStats();
+
+});
