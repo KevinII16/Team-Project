@@ -16,31 +16,76 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// mongodb
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB error:", err));
 
-
-
-const eventSchema = new mongoose.Schema({
-  EventID: String,
-  UserID: { type: String, default: "Test" },
-  Title: { type: String, required: true },
-  Module: String,
-  Date: Date,
-  Time: String,
-  EndTime: String,
-  Day: String,
-  Category: { type: String, required: true },
-  reminderTime: { type: String, default: "1 Hr" }
+// SCHOOL
+const classSchema = new mongoose.Schema({
+  userEmail: String,
+  name: String,
+  day: Number,
+  time: String,
+  week: Number
 }, { timestamps: true });
 
-const Event = mongoose.model("Event", eventSchema);
+const Class = mongoose.model("Class", classSchema);
 
+app.get("/api/classes", async (req, res) => {
+  const { userEmail } = req.query;
+  const classes = await Class.find({ userEmail });
+  res.json(classes);
+});
 
+app.post("/api/classes", async (req, res) => {
+  const { name, day, time, week, userEmail } = req.body;
+  const newClass = new Class({ name, day, time, week, userEmail });
+  await newClass.save();
+  res.status(201).json(newClass);
+});
 
-//  Assignments
+app.delete("/api/classes/:id", async (req, res) => {
+  await Class.findByIdAndDelete(req.params.id);
+  res.json({ message: "Deleted" });
+});
+
+// WORK
+const workSchema = new mongoose.Schema({
+  userEmail: String,
+  day: Number,
+  start: String,
+  end: String,
+  rate: Number,
+  total: Number
+}, { timestamps: true });
+
+const Work = mongoose.model("Work", workSchema);
+
+app.get("/api/work", async (req, res) => {
+  const { userEmail } = req.query;
+  const shifts = await Work.find({ userEmail });
+  res.json(shifts);
+});
+
+app.post("/api/work", async (req, res) => {
+  const { day, start, end, rate, total, userEmail } = req.body;
+
+  await Work.findOneAndUpdate(
+    { day, userEmail },
+    { day, start, end, rate, total, userEmail },
+    { upsert: true, new: true }
+  );
+
+  res.json({ message: "Saved" });
+});
+
+app.delete("/api/work/:id", async (req, res) => {
+  await Work.findByIdAndDelete(req.params.id);
+  res.json({ message: "Deleted" });
+});
+
+// ASSIGNMENTS
 app.get('/api/assignments', async (req, res) => {
   const assignments = await Assignment.find().sort({ dueDate: 1 });
   res.json(assignments);
@@ -58,26 +103,7 @@ app.delete('/api/assignments/:id', async (req, res) => {
   res.json({ message: 'Deleted' });
 });
 
-
-// Events
-app.get("/api/events", async (req, res) => {
-  const events = await Event.find().sort({ Date: 1 });
-  res.json(events);
-});
-
-app.post("/api/events", async (req, res) => {
-  const event = new Event(req.body);
-  await event.save();
-  res.status(201).json(event);
-});
-
-app.delete("/api/events/:id", async (req, res) => {
-  await Event.findByIdAndDelete(req.params.id);
-  res.json({ message: "Deleted" });
-});
-
-
-
+// AUTH
 app.post("/api/register", async (req, res) => {
   const { email, password } = req.body;
 
@@ -102,20 +128,12 @@ app.post("/api/login", async (req, res) => {
   res.json({ message: "Login successful" });
 });
 
-
-
-
-
-
-app.get('/dashboard.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
-});
-
+// routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-
+// server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
