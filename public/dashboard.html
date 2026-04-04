@@ -3,69 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudySync</title>
+  <title>StudySync - Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>StudySync</h1>
-    <nav>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="school.html">School Scheduler</a>
-      <a href="assignments.html">Assignments</a>
-      <a href="work.html">Work Scheduler</a>
-    </nav>
-  </header>
 
-  <div class="container">
-    <div class="page-heading">
-      <div>
-        <h2>Dashboard</h2>
-        <p class="page-subtitle">A simple student planner for college, work and deadlines</p>
-      </div>
-    </div>
+<header>
+  <h1>StudySync</h1>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="school.html">School Scheduler</a>
+    <a href="work.html">Work Scheduler</a>
+    <a href="assignments.html">Assignment Scheduler</a>
+  </nav>
+</header>
 
-    <div class="dashboard-grid">
-      <div class="dashboard-card">
-        <div class="card-icon school-icon">📚</div>
-        <h3>School Schedule</h3>
-        <p>View your weekly timetable with all classes and time slots organised clearly.</p>
-        <a href="school.html" class="card-link-text">View timetable →</a>
-      </div>
+<div class="container">
 
-      <div class="dashboard-card highlight-card">
-        <div class="card-icon assignment-icon">📝</div>
-        <h3>Assignment Scheduler</h3>
-        <p>Track coursework deadlines and save them into the database.</p>
-        <div class="stats-row">
-          <div class="mini-stat">
-            <span class="mini-stat-label">Saved</span>
-            <span id="assignmentCount" class="mini-stat-value">0</span>
-          </div>
-          <div class="mini-stat">
-            <span class="mini-stat-label">Next due</span>
-            <span id="nextDue" class="mini-stat-value small">No data</span>
-          </div>
-        </div>
-        <a href="assignments.html" class="card-link-text">Manage assignments →</a>
-      </div>
-
-      <div class="dashboard-card">
-        <div class="card-icon work-icon">💼</div>
-        <h3>Work Shift Scheduler</h3>
-        <p>Keep your part-time work shifts organised alongside your classes.</p>
-        <a href="work.html" class="card-link-text">View shifts →</a>
-      </div>
-    </div>
-
-    <div class="card summary-card">
-      <h3>Upcoming This Week</h3>
-      <div id="upcomingAssignments" class="upcoming-list">
-        <p class="muted-text">Loading assignments...</p>
-      </div>
-    </div>
+  <div class="page-heading">
+    <h2>Dashboard</h2>
+    <p class="page-subtitle">Overview of your student life</p>
   </div>
 
-  <script src="js/dashboard.js"></script>
+  <div class="dashboard-grid">
+
+
+    <div class="dashboard-card highlight-card">
+         <div class="card-icon">📘</div>>
+      <h3>Assignment Scheduler</h3>
+      <p>Track coursework deadlines and save them into the database.</p>
+
+      <div class="stats-row">
+        <div class="mini-stat">
+          <span class="mini-stat-label">Saved</span>
+          <span class="mini-stat-value" id="assignmentCount">0</span>
+        </div>
+
+        <div class="mini-stat">
+          <span class="mini-stat-label">Next due</span>
+          <span class="mini-stat-value small" id="nextDue">-</span>
+        </div>
+      </div>
+
+      <a href="assignments.html" class="card-link-text">Manage assignments →</a>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon">💼</div>
+      <h3>Work Scheduler</h3>
+      <p>Track your work shifts and earnings.</p>
+
+      <div class="stats-row">
+        <div class="mini-stat">
+          <span class="mini-stat-label">Total Hours</span>
+          <span class="mini-stat-value" id="totalHours">0</span>
+        </div>
+
+        <div class="mini-stat">
+          <span class="mini-stat-label">Total Earned (€)</span>
+          <span class="mini-stat-value" id="totalMoney">€0</span>
+        </div>
+      </div>
+
+      <a href="work.html" class="card-link-text">Manage shifts →</a>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-icon">📚</div>
+      <h3>School Scheduler</h3>
+      <p>Organise your weekly timetable and classes.</p>
+
+      <a href="school.html" class="card-link-text">View timetable →</a>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+
 </body>
 </html>
