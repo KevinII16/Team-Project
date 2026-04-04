@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudySync</title>
+  <title>StudySync - Work</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <header>
   <h1>StudySync</h1>
   <nav>
@@ -16,53 +17,60 @@
     <a href="assignments.html">Assignment Scheduler</a>
   </nav>
 </header>
+
 <div class="container">
 
   <h2>Work Shift Scheduler</h2>
 
-  <div class="card">
-    <div class="grid-7">
-      <div class="cell header-cell">Mon</div>
-      <div class="cell header-cell">Tue</div>
-      <div class="cell header-cell">Wed</div>
-      <div class="cell header-cell">Thu</div>
-      <div class="cell header-cell">Fri</div>
-      <div class="cell header-cell">Sat</div>
-      <div class="cell header-cell">Sun</div>
+  <div class="schedule-layout">
 
-      <div class="cell"><div class="shift-block">10:00 - 14:00</div></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"><div class="shift-block">12:00 - 16:00</div></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
-      <div class="cell"></div>
+    <!-- LEFT -->
+    <div class="timetable-section">
+      <div class="card">
+        <div class="grid-7" id="workTable">
+          <!-- JS fills this -->
+        </div>
+      </div>
     </div>
+
+    <!-- RIGHT -->
+    <div class="add-class-panel">
+
+      <h3>Add Work Shift</h3>
+
+      <form id="workForm">
+
+        <label>Day</label>
+        <select id="workDay">
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+          <option value="7">Sunday</option>
+        </select>
+
+        <label>Start Time</label>
+        <input type="time" id="startTime" required>
+
+        <label>End Time</label>
+        <input type="time" id="endTime" required>
+
+        <label>Hourly Rate (€)</label>
+        <input type="number" id="workRate" step="0.01" required>
+
+        <button type="submit">Add Shift</button>
+
+      </form>
+
+    </div>
+
   </div>
 
-  <div class="card">
-    <h3>Add Work Shift</h3>
-    <form class="add-form">
-      <label>Day</label>
-      <select>
-        <option>Monday</option>
-        <option>Tuesday</option>
-        <option>Wednesday</option>
-        <option>Thursday</option>
-        <option>Friday</option>
-        <option>Saturday</option>
-        <option>Sunday</option>
-      </select>
-
-      <label>Start Time</label>
-      <input type="time">
-
-      <label>End Time</label>
-      <input type="time">
-
-      <button type="submit">Add Shift</button>
-    </form>
-  </div>
 </div>
+
+<script src="js/work.js"></script>
+
 </body>
 </html>
