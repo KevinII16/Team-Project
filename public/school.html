@@ -24,7 +24,6 @@
 
   <div class="schedule-layout">
 
-    <!-- LEFT SIDE -->
     <div class="timetable-section">
 
       <div class="week-tabs">
@@ -35,24 +34,11 @@
 
       <div class="card">
         <div class="grid-5" id="timetable">
-
-          <div class="cell header-cell">Time</div>
-          <div class="cell header-cell">Mon</div>
-          <div class="cell header-cell">Tue</div>
-          <div class="cell header-cell">Wed</div>
-          <div class="cell header-cell">Thu</div>
-          <div class="cell header-cell">Fri</div>
-
-          <div class="empty-state">
-            No classes yet. Add your first class →
-          </div>
-
         </div>
       </div>
 
     </div>
 
-    <!-- RIGHT SIDE -->
     <div class="add-class-panel">
 
       <h3>Add Class</h3>
@@ -73,6 +59,13 @@
 
         <label>Time</label>
         <input type="time" id="classTime" required>
+
+        <label>Week</label>
+        <select id="classWeek">
+          <option value="1">Week 1</option>
+          <option value="2">Week 2</option>
+          <option value="3">Week 3</option>
+        </select>
 
         <button type="submit">Add Class</button>
 
